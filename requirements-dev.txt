@@ -1,3 +1,0 @@
-# Development-only tooling, pinned. Not a runtime dependency.
-# Ruff 0.8.0 provides both the linter and the formatter used by CI.
-ruff==0.8.0

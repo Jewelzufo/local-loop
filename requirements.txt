@@ -1,5 +1,0 @@
-# Pinned direct dependencies, tested 2026-10-27 on Python 3.12.3.
-# Transitive dependencies are resolved by pip at install time.
-requests==2.34.2
-rich==15.0.0
-prompt_toolkit==3.0.53
