@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ollama-cli"
+version = "1.2"
+description = "Local-first terminal chat client for Ollama models"
+# Tested only on Python 3.12.3. The range is deliberately narrow until
+# another version is actually tested; do not widen it on assumption.
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "requests==2.34.2",
+    "rich==15.0.0",
+    "prompt_toolkit==3.0.53",
+]
+license = { text = "Apache-2.0" }
+classifiers = [
+    "License :: OSI Approved :: Apache Software License",
+]
+
+[project.scripts]
+ollama-cli = "main:main"
+# Console script landed with the v1.2 pin. Pinned v1.1 had no main()
+# function, so adding it earlier would have broken installs of v1.1.
+
+[tool.setuptools]
+py-modules = ["main"]
+
+[tool.ruff]
+# Ruff 0.8.0, pinned in requirements-dev.txt. Default line length (88).
+# Lint and format gates apply to main_v1.2.py and tests/ only. Pinned
+# main.py and main_v1.1.py are frozen and are excluded until a new pin.
+target-version = "py312"
+lint.select = ["F"]
+
+[tool.ruff.lint.per-file-ignores]
+# Pinned files are frozen; they are not lint-gated in CI.
+"main.py" = ["ALL"]
+"main_v1.1.py" = ["ALL"]
